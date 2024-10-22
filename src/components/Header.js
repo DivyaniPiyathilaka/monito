@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaSearch, FaChevronDown, FaBars, FaTimes } from 'react-icons/fa';
-import logo from '../assets/images/logo.png';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaSearch, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
+import logo from "../assets/images/logo.png";
 
 // Currency icons (PNG)
-import USDIcon from '../assets/images/currency/usd.png';
-import EURIcon from '../assets/images/currency/eur.png';
-import GBPIcon from '../assets/images/currency/gbp.png';
-import JPYIcon from '../assets/images/currency/jpy.png';
-import VNDIcon from '../assets/images/currency/vnd.png';
+import USDIcon from "../assets/images/currency/usd.png";
+import EURIcon from "../assets/images/currency/eur.png";
+import GBPIcon from "../assets/images/currency/gbp.png";
+import JPYIcon from "../assets/images/currency/jpy.png";
+import VNDIcon from "../assets/images/currency/vnd.png";
 
 const currencyOptions = [
-  { code: 'USD', label: 'USD', icon: <img src={USDIcon} alt="USD" className="w-5 h-5" /> },
-  { code: 'EUR', label: 'EUR', icon: <img src={EURIcon} alt="EUR" className="w-5 h-5" /> },
-  { code: 'GBP', label: 'GBP', icon: <img src={GBPIcon} alt="GBP" className="w-5 h-5" /> },
-  { code: 'JPY', label: 'JPY', icon: <img src={JPYIcon} alt="JPY" className="w-5 h-5" /> },
-  { code: 'VND', label: 'VND', icon: <img src={VNDIcon} alt="VND" className="w-5 h-5" /> },
+  {
+    code: "USD",
+    label: "USD",
+    icon: <img src={USDIcon} alt="USD" className="w-5 h-5" />,
+  },
+  {
+    code: "EUR",
+    label: "EUR",
+    icon: <img src={EURIcon} alt="EUR" className="w-5 h-5" />,
+  },
+  {
+    code: "GBP",
+    label: "GBP",
+    icon: <img src={GBPIcon} alt="GBP" className="w-5 h-5" />,
+  },
+  {
+    code: "JPY",
+    label: "JPY",
+    icon: <img src={JPYIcon} alt="JPY" className="w-5 h-5" />,
+  },
+  {
+    code: "VND",
+    label: "VND",
+    icon: <img src={VNDIcon} alt="VND" className="w-5 h-5" />,
+  },
 ];
 
 const Header = () => {
@@ -39,10 +59,12 @@ const Header = () => {
   return (
     <header className="bg-white p-4 shadow-md container mx-auto">
       <nav className="flex items-center justify-between w-full ">
-
         {/* Hamburger Icon for Mobile */}
         <div className="lg:hidden">
-          <FaBars className="text-[#003459] text-2xl cursor-pointer" onClick={toggleSidebar} />
+          <FaBars
+            className="text-[#003459] text-2xl cursor-pointer"
+            onClick={toggleSidebar}
+          />
         </div>
 
         {/* Logo in the center for mobile, left for desktop */}
@@ -53,10 +75,30 @@ const Header = () => {
 
         {/* Desktop Navigation (hidden on mobile) */}
         <div className="hidden lg:flex space-x-10 flex-grow justify-center">
-          <Link to="/" className="text-[#003459] font-extrabold hover:underline">Home</Link>
-          <Link to="/category" className="text-[#003459] font-extrabold hover:underline">Category</Link>
-          <Link to="/about" className="text-[#003459] font-extrabold hover:underline">About</Link>
-          <Link to="/contact" className="text-[#003459] font-extrabold hover:underline">Contact</Link>
+          <Link
+            to="/"
+            className="text-[#003459] font-extrabold hover:underline"
+          >
+            Home
+          </Link>
+          <Link
+            to="/category"
+            className="text-[#003459] font-extrabold hover:underline"
+          >
+            Category
+          </Link>
+          <Link
+            to="/about"
+            className="text-[#003459] font-extrabold hover:underline"
+          >
+            About
+          </Link>
+          <Link
+            to="/contact"
+            className="text-[#003459] font-extrabold hover:underline"
+          >
+            Contact
+          </Link>
         </div>
 
         {/* Mobile Search Icon */}
@@ -81,7 +123,10 @@ const Header = () => {
           </button>
 
           <div className="relative">
-            <div className="flex items-center space-x-1 cursor-pointer" onClick={toggleDropdown}>
+            <div
+              className="flex items-center space-x-1 cursor-pointer"
+              onClick={toggleDropdown}
+            >
               {selectedCurrency.icon}
               <span className="text-[#003459]">{selectedCurrency.code}</span>
               <FaChevronDown className="text-[#003459] text-sm" />
@@ -110,16 +155,39 @@ const Header = () => {
         <div className="fixed inset-0 bg-[#003459] text-white z-50">
           <div className="flex justify-between items-center p-4">
             {/* Close Icon */}
-            <FaTimes className="text-2xl cursor-pointer" onClick={toggleSidebar} />
+            <FaTimes
+              className="text-2xl cursor-pointer"
+              onClick={toggleSidebar}
+            />
             <img src={logo} alt="Logo" className="h-10 mx-auto" />
             <FaSearch className="text-2xl cursor-pointer" />
           </div>
 
           <div className="flex flex-col items-start mt-8 space-y-4 p-4">
-            <Link to="/" className="text-white text-lg" onClick={toggleSidebar}>Home</Link>
-            <Link to="/category" className="text-white text-lg" onClick={toggleSidebar}>Category</Link>
-            <Link to="/about" className="text-white text-lg" onClick={toggleSidebar}>About</Link>
-            <Link to="/contact" className="text-white text-lg" onClick={toggleSidebar}>Contact</Link>
+            <Link to="/" className="text-white text-lg" onClick={toggleSidebar}>
+              Home
+            </Link>
+            <Link
+              to="/category"
+              className="text-white text-lg"
+              onClick={toggleSidebar}
+            >
+              Category
+            </Link>
+            <Link
+              to="/about"
+              className="text-white text-lg"
+              onClick={toggleSidebar}
+            >
+              About
+            </Link>
+            <Link
+              to="/contact"
+              className="text-white text-lg"
+              onClick={toggleSidebar}
+            >
+              Contact
+            </Link>
           </div>
         </div>
       )}

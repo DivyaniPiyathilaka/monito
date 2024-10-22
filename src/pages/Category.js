@@ -102,11 +102,9 @@ const Category = () => {
 
   return (
     <div className="extra-padding">
-      {/* Breadcrumb Navigation */}
       <div className="text-gray-500 mb-4 text-xs flex items-center">
         <span className="text-xs">Home</span>
         <FaChevronRight className="mx-4 text-xs" />{" "}
-        {/* Increased space and reduced size */}
         <span className="text-xs">Dog</span>
         <FaChevronRight className="mx-4 text-xs" />
         <span className="text-xs">Small</span>
@@ -115,17 +113,16 @@ const Category = () => {
       {/* Banner Section */}
       {/* Desktop Banner - Hidden on Mobile */}
       <div className="relative bg-gradient-to-r from-[#FCEED5] to-[#FFE7BA] rounded-xl px-12 py-6 flex justify-end items-center mb-6 overflow-hidden hidden md:flex">
-        {/* Large blue square */}
         <div
           className="absolute bg-[#103559]"
           style={{
-            width: "800px", // Significantly larger size
-            height: "800px", // Significantly larger size
-            transform: "translate(-10%, -25%) rotate(-20deg)", // Rotate more
-            left: "50%", // Position it to start from 50%
-            top: "50%", // Center it vertically
-            zIndex: 1, // Make sure it appears in front of the yellow background
-            borderRadius: "10%", // Very rounded corners
+            width: "800px",
+            height: "800px",
+            transform: "translate(-10%, -25%) rotate(-20deg)",
+            left: "50%",
+            top: "50%",
+            zIndex: 1,
+            borderRadius: "10%",
           }}
         ></div>
 
@@ -164,13 +161,13 @@ const Category = () => {
         <div
           className="absolute bg-[#103559]"
           style={{
-            width: "300px", // Smaller size for mobile
-            height: "300px", // Smaller size for mobile
-            transform: "translate(-50%, -50%) rotate(-20deg)", // Adjusted position and rotation
-            left: "50%", // Center it horizontally
-            top: "20%", // Adjust vertical position
-            zIndex: 1, // Behind text but in front of background
-            borderRadius: "10%", // Very rounded corners
+            width: "300px",
+            height: "300px",
+            transform: "translate(-50%, -50%) rotate(-20deg)",
+            left: "50%",
+            top: "20%",
+            zIndex: 1,
+            borderRadius: "10%",
           }}
         ></div>
 
@@ -213,7 +210,6 @@ const Category = () => {
       {/* Content Section */}
       <div className="hidden md:flex">
         {" "}
-        {/* Desktop view hidden on small screens */}
         {/* Filter Section (1/3) */}
         <div className="w-1/3 pr-4">
           <h3 className="text-[#003459] font-extrabold text-2xl mb-2">
@@ -349,7 +345,7 @@ const Category = () => {
             </label>
           </div>
         </div>
-        {/* Pets Section (2/3) */}
+        {/* Pets Section  */}
         <div className="w-2/3">
           <div className="flex items-center mb-4">
             <h3 className="text-[#003459] font-extrabold text-2xl mr-2">

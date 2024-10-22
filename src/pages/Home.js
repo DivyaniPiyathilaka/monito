@@ -3,9 +3,9 @@ import axios from "axios";
 import { FaArrowLeft, FaArrowRight, FaChevronRight } from "react-icons/fa";
 
 const Home = () => {
-  const [pets, setPets] = useState([]); // State to store pet data
-  const [loading, setLoading] = useState(true); // State to manage loading state
-  const [error, setError] = useState(null); // State to manage errors
+  const [pets, setPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
 
   // Fetch pets data from API
@@ -99,10 +99,7 @@ const Home = () => {
           </div>
 
           {/* Image Section */}
-          <div className="md:w-1/2 md:mt-0 mt-8">
-            {/* Optional: You can add an image here if needed for mobile layout */}
-            {/* <img src={require('../assets/images/Home/YourImage.png')} alt="Description" className="w-full h-auto rounded-3xl" /> */}
-          </div>
+          <div className="md:w-1/2 md:mt-0 mt-8"></div>
         </div>
       </section>
 
@@ -155,9 +152,8 @@ const Home = () => {
         className="mt-12 bg-[#003459] text-white rounded-3xl p-8 flex flex-col md:flex-row items-center justify-end relative overflow-hidden min-h-[500px] bg-cover bg-center"
         style={{
           backgroundImage: `url(${require("../assets/images/Home/Banner1.png")})`,
-        }} // Set the background image
+        }}
       >
-        {/* Text and Buttons */}
         <div className="md:w-1/2 text-right z-10 relative">
           <h2 className="text-4xl font-bold text-black">One More Friend</h2>
           <p className="text-2xl font-semibold text-black mb-4">
@@ -254,7 +250,7 @@ const Home = () => {
       </div>
 
       {/* Banner 2*/}
-      {/* Updated Banner with Text on the Left */}
+
       <div
         className="mt-12 bg-[#003459] text-white rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between relative overflow-hidden min-h-[500px] bg-cover bg-center"
         style={{
@@ -294,10 +290,8 @@ const Home = () => {
       {/* Pet Knowledge Section */}
 
       <div className="mt-8 flex justify-between items-center pl-4 sm:pl-20">
-        {/* "You already know?" text */}
         <p className="font-semibold">You already know?</p>
 
-        {/* "View More" button positioned to the right of "Useful Pet Knowledge" in desktop view */}
         <div className="hidden sm:flex">
           <button className="bg-white hover:bg-[#002a39] text-[#003459] px-4 py-2 rounded-full border border-[#003459] font-gilroy flex items-center">
             View More
@@ -376,7 +370,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* "View More" button below the cards in mobile view */}
       <div className="flex justify-end mt-4 sm:hidden">
         <button className="bg-white hover:bg-[#002a39] text-[#003459] px-4 py-2 rounded-full border border-[#003459] font-gilroy flex items-center">
           View More

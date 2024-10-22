@@ -5,8 +5,13 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { FiMessageSquare } from "react-icons/fi";
 import { FaChevronRight } from "react-icons/fa";
-import { FaShareAlt, FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
-
+import {
+  FaShareAlt,
+  FaFacebook,
+  FaTwitter,
+  FaInstagram,
+  FaYoutube,
+} from "react-icons/fa";
 
 const About = () => {
   const [customers, setCustomers] = useState([]);
@@ -55,7 +60,7 @@ const About = () => {
         );
         const data = await response.json();
         setPets(data);
-        setSelectedPet(data[0]); // Set the first pet as selected by default
+        setSelectedPet(data[0]);
       } catch (error) {
         console.error("Error fetching pets:", error);
       }
@@ -63,7 +68,6 @@ const About = () => {
     fetchPets();
   }, []);
 
-  // Handle thumbnail click
   const handleThumbnailClick = (pet) => {
     setSelectedPet(pet);
   };
@@ -81,170 +85,190 @@ const About = () => {
       `}</style>
 
       {/* 1st Section: Pet Details with Slider */}
-      <div className="mb-12 border border-gray-300 rounded-lg p-5 flex flex-col md:flex-row"> {/* Flex container */}
-  {/* Left Hand Side: Slider */}
-  <div className="md:w-1/2"> {/* Set width for LHS */}
-    <div className="mb-4">
-      {selectedPet && (
-        <img
-          src={selectedPet.image}
-          alt={selectedPet.breed}
-          className="w-full h-auto object-cover rounded-lg"
-        />
-      )}
-    </div>
+      <div className="mb-12 border border-gray-300 rounded-lg p-5 flex flex-col md:flex-row">
+        {" "}
+        {/* Flex container */}
+        <div className="md:w-1/2">
+          <div className="mb-4">
+            {selectedPet && (
+              <img
+                src={selectedPet.image}
+                alt={selectedPet.breed}
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            )}
+          </div>
 
-    {/* Swiper for thumbnails */}
-    <Swiper
-      spaceBetween={10}
-      slidesPerView={5} // Show 5 slides per view
-      autoplay={{ delay: 3000, disableOnInteraction: false }} // Autoplay settings
-      pagination={{ clickable: true }} // Optional pagination
-      modules={[Pagination, Autoplay]} // Include necessary modules
-      breakpoints={{
-        640: {
-          slidesPerView: 2, // 2 slides for small screens
-        },
-        768: {
-          slidesPerView: 3, // 3 slides for medium screens
-        },
-        1024: {
-          slidesPerView: 5, // Keep it at 5 slides for larger screens
-        },
-      }}
-    >
-      {pets.map((pet) => (
-        <SwiperSlide key={pet.id}>
-          <img
-            src={pet.image}
-            alt={pet.breed}
-            className="w-100 h-auto object-cover rounded-lg cursor-pointer"
-            onClick={() => handleThumbnailClick(pet)}
-          />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-    {/* Alert Section */}
-<div className="mt-4 p-2 rounded-lg bg-[#fceed5] font-extrabold text-sm text-center">
-  <span role="img" aria-label="Health Guarantee" className="mr-1">🐾</span>
-  <span>100% health guarantee for pets</span>
-  <span role="img" aria-label="Health Guarantee" className="mx-1">🐾</span>
-  <span>100% guarantee of pet identification</span>
-</div>
+          {/* Swiper for thumbnails */}
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={5}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            pagination={{ clickable: true }}
+            modules={[Pagination, Autoplay]}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+              },
+              768: {
+                slidesPerView: 3,
+              },
+              1024: {
+                slidesPerView: 5,
+              },
+            }}
+          >
+            {pets.map((pet) => (
+              <SwiperSlide key={pet.id}>
+                <img
+                  src={pet.image}
+                  alt={pet.breed}
+                  className="w-100 h-auto object-cover rounded-lg cursor-pointer"
+                  onClick={() => handleThumbnailClick(pet)}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          {/* Alert Section */}
+          <div className="mt-4 p-2 rounded-lg bg-[#fceed5] font-extrabold text-sm text-center">
+            <span role="img" aria-label="Health Guarantee" className="mr-1">
+              🐾
+            </span>
+            <span>100% health guarantee for pets</span>
+            <span role="img" aria-label="Health Guarantee" className="mx-1">
+              🐾
+            </span>
+            <span>100% guarantee of pet identification</span>
+          </div>
 
-{/* Share Section */}
-<div className="mt-8 flex items-center">
-  <FaShareAlt className="text-xl mr-2 text-[#103559]" /> {/* Share Icon */}
-  <span className="text-md font-semibold text-[#103559] font-extrabold text-center">Share:</span>
-  <div className="flex ml-4 space-x-4">
-    <a href={`https://facebook.com/sharer/sharer.php?u=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-      <FaFacebook className="text-gray-600 text-md hover:text-gray-300" />
-    </a>
-    <a href={`https://twitter.com/intent/tweet?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-      <FaTwitter className="text-gray-600 text-md hover:text-gray-300" />
-    </a>
-    <a href={`https://instagram.com/?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-      <FaInstagram className="text-gray-600 text-md hover:text-gray-300" />
-    </a>
-    <a href={`https://youtube.com/share?url=${window.location.href}`} target="_blank" rel="noopener noreferrer">
-      <FaYoutube className="text-gray-600 text-md hover:text-gray-300" />
-    </a>
-  </div>
-</div>
-
-  </div>
-
-  {/* Right Hand Side: Details */}
-  <div className="md:w-1/2 pl-0 md:pl-5 md:ml-10 pt-10 md:pt-0"> {/* Set width for RHS */}
-    {/* Breadcrumb Navigation */}
-    <div className="text-gray-500 mb-2 text-xs flex items-center">
-      <span className="text-xs">Home</span>
-      <FaChevronRight className="mx-4 text-xs" />
-      <span className="text-xs">Dog</span>
-      <FaChevronRight className="mx-4 text-xs" />
-      <span className="text-xs">Large Dog</span>
-      <FaChevronRight className="mx-4 text-xs" />
-      <span className="text-xs">{selectedPet?.breed}</span>
-    </div>
-
-    <span className="text-xs text-gray-500">{selectedPet?.id}</span>
-
-    {selectedPet && (
-      <div>
-        <h1 className="text-2xl md:text-3xl text-black mb-2 font-extrabold">
-          {selectedPet.breed}
-        </h1>
-        <h2 className="text-lg md:text-xl mb-4 font-extrabold text-[#103559]">
-          {selectedPet.price}
-        </h2>
-
-        {/* Buttons */}
-        <div className="flex gap-2 mb-6">
-          <button className="bg-[#103559] font-extrabold text-white py-2 px-4 rounded-full">
-            Contact
-          </button>
-          <button className="text-[#103559] py-2 px-4 rounded-full flex items-center gap-2 border border-[#103559] font-extrabold">
-            <FiMessageSquare className="text-[#103559] font-extrabold" />{" "}
-            Chat with Monito
-          </button>
+          {/* Share Section */}
+          <div className="mt-8 flex items-center">
+            <FaShareAlt className="text-xl mr-2 text-[#103559]" />
+            <span className="text-md font-semibold text-[#103559] font-extrabold text-center">
+              Share:
+            </span>
+            <div className="flex ml-4 space-x-4">
+              <a
+                href={`https://facebook.com/sharer/sharer.php?u=${window.location.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook className="text-gray-600 text-md hover:text-gray-300" />
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${window.location.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaTwitter className="text-gray-600 text-md hover:text-gray-300" />
+              </a>
+              <a
+                href={`https://instagram.com/?url=${window.location.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram className="text-gray-600 text-md hover:text-gray-300" />
+              </a>
+              <a
+                href={`https://youtube.com/share?url=${window.location.href}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube className="text-gray-600 text-md hover:text-gray-300" />
+              </a>
+            </div>
+          </div>
         </div>
+        {/* Right Hand Side: Details */}
+        <div className="md:w-1/2 pl-0 md:pl-5 md:ml-10 pt-10 md:pt-0">
+          {" "}
+          {/* Set width for RHS */}
+          {/* Breadcrumb Navigation */}
+          <div className="text-gray-500 mb-2 text-xs flex items-center">
+            <span className="text-xs">Home</span>
+            <FaChevronRight className="mx-4 text-xs" />
+            <span className="text-xs">Dog</span>
+            <FaChevronRight className="mx-4 text-xs" />
+            <span className="text-xs">Large Dog</span>
+            <FaChevronRight className="mx-4 text-xs" />
+            <span className="text-xs">{selectedPet?.breed}</span>
+          </div>
+          <span className="text-xs text-gray-500">{selectedPet?.id}</span>
+          {selectedPet && (
+            <div>
+              <h1 className="text-2xl md:text-3xl text-black mb-2 font-extrabold">
+                {selectedPet.breed}
+              </h1>
+              <h2 className="text-lg md:text-xl mb-4 font-extrabold text-[#103559]">
+                {selectedPet.price}
+              </h2>
 
-        {/* Table for pet details */}
-        <table className="w-full text-sm text-gray-500">
-          <tbody>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">SKU</td>
-              <td className="py-1 font-bold">: {selectedPet.id}</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Gender</td>
-              <td className="py-1 font-bold">: {selectedPet.gender}</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Size</td>
-              <td className="py-1 font-bold">: Medium</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Color</td>
-              <td className="py-1 font-bold">: Various</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Vaccinated</td>
-              <td className="py-1 font-bold">: Yes</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Dewormed</td>
-              <td className="py-1 font-bold">: Yes</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Cost</td>
-              <td className="py-1 font-bold">: TBD</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Microchip</td>
-              <td className="py-1 font-bold">: Yes</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Location</td>
-              <td className="py-1 font-bold">: TBD</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">Published Date</td>
-              <td className="py-1 font-bold">: TBD</td>
-            </tr>
-            <tr className="border-b border-gray-300">
-              <td className="py-2 pr-2 font-normal">
-                Additional Information
-              </td>
-              <td className="py-1 font-bold">: TBD</td>
-            </tr>
-          </tbody>
-        </table>
+              {/* Buttons */}
+              <div className="flex gap-2 mb-6">
+                <button className="bg-[#103559] font-extrabold text-white py-2 px-4 rounded-full">
+                  Contact
+                </button>
+                <button className="text-[#103559] py-2 px-4 rounded-full flex items-center gap-2 border border-[#103559] font-extrabold">
+                  <FiMessageSquare className="text-[#103559] font-extrabold" />{" "}
+                  Chat with Monito
+                </button>
+              </div>
+
+              {/* Table for pet details */}
+              <table className="w-full text-sm text-gray-500">
+                <tbody>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">SKU</td>
+                    <td className="py-1 font-bold">: {selectedPet.id}</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Gender</td>
+                    <td className="py-1 font-bold">: {selectedPet.gender}</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Size</td>
+                    <td className="py-1 font-bold">: Medium</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Color</td>
+                    <td className="py-1 font-bold">: Various</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Vaccinated</td>
+                    <td className="py-1 font-bold">: Yes</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Dewormed</td>
+                    <td className="py-1 font-bold">: Yes</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Cost</td>
+                    <td className="py-1 font-bold">: TBD</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Microchip</td>
+                    <td className="py-1 font-bold">: Yes</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Location</td>
+                    <td className="py-1 font-bold">: TBD</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">Published Date</td>
+                    <td className="py-1 font-bold">: TBD</td>
+                  </tr>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-2 pr-2 font-normal">
+                      Additional Information
+                    </td>
+                    <td className="py-1 font-bold">: TBD</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
-    )}
-  </div>
-</div>
-
 
       {/* 2nd Section: Our Lovely Customers */}
       <section className="mb-12">
@@ -257,13 +281,13 @@ const About = () => {
           modules={[Pagination, Autoplay]}
           breakpoints={{
             640: {
-              slidesPerView: 2, // 2 slides for small screens
+              slidesPerView: 2,
             },
             768: {
-              slidesPerView: 4.5, // 4.5 slides for medium screens
+              slidesPerView: 4.5,
             },
             1024: {
-              slidesPerView: 4.5, // 4.5 slides for larger screens
+              slidesPerView: 4.5,
             },
           }}
         >
@@ -294,13 +318,11 @@ const About = () => {
           See More Puppies
         </h2>
 
-        {/* Use a responsive layout: 2 columns on mobile, Swiper on larger screens */}
         <div className="block md:hidden">
           {" "}
           {/* Mobile view */}
           <div className="grid grid-cols-2 gap-4">
             {" "}
-            {/* Display puppies in a grid with 2 columns */}
             {puppies.map((puppy) => (
               <div
                 key={puppy.id}
@@ -310,7 +332,7 @@ const About = () => {
                   src={puppy.image}
                   alt={puppy.breed}
                   className="w-full h-48 object-cover rounded-lg "
-                  style={{ aspectRatio: "1 / 1" }} // Ensures square aspect ratio
+                  style={{ aspectRatio: "1 / 1" }}
                 />
                 <h4 className="font-extrabold text-md">
                   {puppy.id} - {puppy.breed}
@@ -338,13 +360,13 @@ const About = () => {
             modules={[Pagination, Autoplay]}
             breakpoints={{
               640: {
-                slidesPerView: 2, // 2 slides for small screens
+                slidesPerView: 2,
               },
               768: {
-                slidesPerView: 3, // 3 slides for medium screens
+                slidesPerView: 3,
               },
               1024: {
-                slidesPerView: 4, // 4 slides for larger screens
+                slidesPerView: 4,
               },
             }}
           >
@@ -357,7 +379,7 @@ const About = () => {
                     src={puppy.image}
                     alt={puppy.breed}
                     className="w-full h-48 object-cover"
-                    style={{ borderRadius: "5px", aspectRatio: "1 / 1" }} // Ensures square aspect ratio
+                    style={{ borderRadius: "5px", aspectRatio: "1 / 1" }}
                   />
                   <h4 className="font-extrabold text-md">
                     {puppy.id} - {puppy.breed}
