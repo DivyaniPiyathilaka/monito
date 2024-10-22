@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'SVN Gilroy';
+    src: url('./assets/fonts/SVN-Gilroy-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'SVN Gilroy Bold';
+    src: url('./assets/fonts/SVN-Gilroy-Bold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'SVN Gilroy', sans-serif;
+    background-color: #fdfdfd;
+  }
+
+  .font-extrabold {
+    font-family: 'SVN Gilroy Bold', sans-serif;
+  }
+  
+
+  .extra-padding {
+    padding-left: 180px;
+    padding-right: 180px;
+  }
+
+  /* Add a media query for exta padding */
+  @media (max-width: 768px) {
+    .extra-padding {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background: #fffff0; /* Default color for inactive bullets */
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #003459; /* Color for the active bullet, can be the same or different */
+  }
+  
+
+  
+
+  
+  
+  
+  /* You can add more font-weights and styles as needed */
+  
